@@ -125,7 +125,7 @@
         .hero {
             padding: 180px 0 100px;
             background: linear-gradient(rgba(0,0,0,0.85), rgba(0,0,0,0.9)), 
-                        var(--hero-bg, url('https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80'));
+                        url('https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80');
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
@@ -320,6 +320,69 @@
             font-size: 1.1rem;
         }
         
+        /* Why Section */
+        .why {
+            padding: 120px 0;
+            background-color: var(--black);
+            text-align: center;
+            position: relative;
+        }
+        
+        .why:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 1px;
+            background: linear-gradient(to right, transparent, var(--gold), transparent);
+        }
+        
+        .why-content {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        
+        .why-text {
+            font-size: 1.5rem;
+            line-height: 1.8;
+            color: var(--gray);
+            margin-bottom: 60px;
+            font-weight: 500;
+        }
+        
+        .why-text span {
+            color: var(--gold);
+            font-weight: 700;
+        }
+        
+        .mission-features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 60px;
+        }
+        
+        .mission-feature {
+            background: linear-gradient(145deg, rgba(30,30,30,0.8), rgba(10,10,10,0.9));
+            padding: 30px;
+            border-radius: 12px;
+            border-top: 4px solid var(--gold);
+            text-align: left;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+        
+        .mission-feature h4 {
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            color: var(--gold-light);
+        }
+        
+        .mission-feature p {
+            color: var(--gray);
+            font-size: 1.1rem;
+        }
+        
         /* Application Section */
         .application {
             padding: 120px 0;
@@ -337,6 +400,22 @@
             width: 100%;
             height: 1px;
             background: linear-gradient(to right, transparent, var(--gold), transparent);
+        }
+        
+        .banner {
+            background: linear-gradient(135deg, var(--gold), var(--gold-light));
+            color: var(--black);
+            padding: 25px;
+            border-radius: 10px;
+            margin-bottom: 50px;
+            font-weight: 900;
+            font-size: 1.8rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            box-shadow: 0 10px 30px rgba(212, 175, 55, 0.4);
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
         }
         
         .form-container {
@@ -658,6 +737,15 @@
             .proof-grid {
                 grid-template-columns: 1fr;
             }
+            
+            .mission-features {
+                grid-template-columns: 1fr;
+            }
+            
+            .banner {
+                font-size: 1.4rem;
+                padding: 20px;
+            }
         }
     </style>
 </head>
@@ -673,6 +761,7 @@
                 <nav>
                     <ul>
                         <li><a href="#about">The Code</a></li>
+                        <li><a href="#why">Why We Exist</a></li>
                         <li><a href="#application">Join The Brotherhood</a></li>
                         <li><a href="#proof">Proof</a></li>
                         <li><a href="#contact">Contact</a></li>
@@ -733,10 +822,48 @@
         </div>
     </section>
 
+    <!-- Why Section -->
+    <section class="why" id="why">
+        <div class="container">
+            <h2 class="section-title">WHY WE <span>EXIST</span></h2>
+            <div class="why-content">
+                <div class="why-text">
+                    <p>We live in a world where the youth are poisoned. Schools lie. Society softens. We train for truth. Pain. Discipline. We don't ask permission. We rewrite destiny.</p>
+                </div>
+                
+                <h3 class="section-title" style="font-size: 2.5rem; margin-bottom: 40px;">YOUR <span>MISSION</span> (ONCE INSIDE)</h3>
+                
+                <div class="mission-features">
+                    <div class="mission-feature">
+                        <h4>Daily Discipline Ritual</h4>
+                        <p>Wake-up, journaling, movement - no exceptions. The foundation of a lion's day.</p>
+                    </div>
+                    <div class="mission-feature">
+                        <h4>Weekly Check-In</h4>
+                        <p>LionFuel HQ or WhatsApp accountability. We track progress, not excuses.</p>
+                    </div>
+                    <div class="mission-feature">
+                        <h4>Brotherhood Accountability</h4>
+                        <p>Your brothers push you when you falter. No weakness tolerated.</p>
+                    </div>
+                    <div class="mission-feature">
+                        <h4>No Outside Influence</h4>
+                        <p>Cut the noise. Focus on growth. We build in silence, win in public.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Application Section -->
     <section class="application" id="application">
         <div class="container">
             <h2 class="section-title">REQUEST <span>ACCESS</span></h2>
+            
+            <div class="banner">
+                50 Free Codes – Only Real Ones Apply. No sheep allowed.
+            </div>
+            
             <div class="form-container">
                 <h3 class="form-title">Request Access to LionFuel Code</h3>
                 <form id="application-form">
@@ -772,21 +899,21 @@
             <h2 class="section-title">PROOF OF <span>IMPACT</span></h2>
             <div class="proof-grid">
                 <div class="proof-item">
-                    <div class="proof-img" style="background-image: url('IMAGE_URL_1')"></div>
+                    <div class="proof-img" style="background-image: url('https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80')"></div>
                     <div class="proof-content">
                         <h4>Training Sessions</h4>
                         <p>Real mentorship in action. Building the next generation of leaders through intensive training and discipline.</p>
                     </div>
                 </div>
                 <div class="proof-item">
-                    <div class="proof-img" style="background-image: url('IMAGE_URL_2')"></div>
+                    <div class="proof-img" style="background-image: url('https://images.unsplash.com/photo-1518458028785-8fbcd101ebb9?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80')"></div>
                     <div class="proof-content">
                         <h4>Lion HQ</h4>
                         <p>Our strategic headquarters where minds are forged and plans are made. The epicenter of the brotherhood.</p>
                     </div>
                 </div>
                 <div class="proof-item">
-                    <div class="proof-img" style="background-image: url('IMAGE_URL_3')"></div>
+                    <div class="proof-img" style="background-image: url('https://images.unsplash.com/photo-1551632811-561732d1e306?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80')"></div>
                     <div class="proof-content">
                         <h4>The Brotherhood</h4>
                         <p>A community of driven individuals pushing each other to excel beyond limits. Winners building winners.</p>
@@ -802,9 +929,9 @@
             <div class="footer-content">
                 <div class="footer-logo">LION FUEL CODE</div>
                 <div class="social-links">
-                    <a href="https://www.tiktok.com/@gtv.by.g.chetty"><i class="fab fa-tiktok"></i></a>
-                    <a href="https://www.tiktok.com/@lionfuel"><i class="fab fa-tiktok"></i></a>
-                    <a href="#" class="whatsapp-btn">
+                    <a href="https://www.tiktok.com/@gtv.by.g.chetty" target="_blank"><i class="fab fa-tiktok"></i></a>
+                    <a href="https://www.tiktok.com/@lionfuel" target="_blank"><i class="fab fa-tiktok"></i></a>
+                    <a href="https://wa.me/23059237053" class="whatsapp-btn" target="_blank">
                         <i class="fab fa-whatsapp"></i> Message the LionFuel Team
                     </a>
                 </div>
@@ -873,6 +1000,4 @@
         });
     </script>
 </body>
-
 </html>
-
