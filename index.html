@@ -76,6 +76,14 @@
             font-size: 24px;
             color: var(--black);
             box-shadow: 0 0 20px var(--gold-glow);
+            overflow: hidden;
+        }
+        
+        .logo-icon img {
+            width: 70%;
+            height: 70%;
+            object-fit: contain;
+            border-radius: 50%;
         }
         
         .logo-text {
@@ -508,6 +516,54 @@
             transform: translateY(-3px);
             box-shadow: 0 15px 40px rgba(212, 175, 55, 0.6);
         }
+
+        /* Backup WhatsApp Instructions */
+        .backup-instructions {
+            margin-top: 30px;
+            padding: 20px;
+            background: rgba(212, 175, 55, 0.1);
+            border-radius: 10px;
+            border-left: 4px solid var(--gold);
+        }
+        
+        .backup-instructions h4 {
+            color: var(--gold);
+            margin-bottom: 10px;
+            font-size: 1.2rem;
+        }
+        
+        .backup-instructions p {
+            color: var(--gray);
+            margin-bottom: 15px;
+            font-size: 0.9rem;
+        }
+        
+        .message-template {
+            background: rgba(0,0,0,0.3);
+            padding: 15px;
+            border-radius: 8px;
+            font-family: monospace;
+            font-size: 0.8rem;
+            color: var(--white);
+            margin-bottom: 15px;
+            line-height: 1.5;
+        }
+        
+        .copy-btn {
+            background: transparent;
+            border: 1px solid var(--gold);
+            color: var(--gold);
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            transition: all 0.3s;
+        }
+        
+        .copy-btn:hover {
+            background: var(--gold);
+            color: var(--black);
+        }
         
         /* Proof Section */
         .proof {
@@ -750,14 +806,15 @@
 </head>
 <body>
     <!-- Header -->
-     <header>
-        <div class="logo">
-    <div class="logo-icon">
-        <img src="images/garen5.jpg" alt="Lion Fuel Code Logo" style="width: 70%; height: 70%; object-fit: contain;">
-    </div>
-    <div class="logo-text">LION FUEL CODE</div>
-</div>
-
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <div class="logo-icon">
+                        <img src="images/garen5.jpg" alt="Lion Fuel Code Logo">
+                    </div>
+                    <div class="logo-text">LION FUEL CODE</div>
+                </div>
                 <nav>
                     <ul>
                         <li><a href="#about">The Code</a></li>
@@ -889,6 +946,23 @@
                     </div>
                     <button type="submit" class="submit-btn">SUBMIT APPLICATION</button>
                 </form>
+
+                <!-- Backup WhatsApp Instructions -->
+                <div class="backup-instructions">
+                    <h4>Having issues sending?</h4>
+                    <p>If the form doesn't work, manually message us on WhatsApp:</p>
+                    <div class="message-template">
+                        <div><strong>Number:</strong> +230 5923 7053</div>
+                        <div><strong>Message Format:</strong></div>
+                        <div>LION FUEL CODE APPLICATION</div>
+                        <div>Name: [Your Full Name]</div>
+                        <div>Age: [Your Age]</div>
+                        <div>Phone: [Your Number]</div>
+                        <div>Location: [Your City]</div>
+                        <div>Why I want to join: [Your Reason]</div>
+                    </div>
+                    <button id="copyTemplate" class="copy-btn">Copy Message Template</button>
+                </div>
             </div>
         </div>
     </section>
@@ -931,7 +1005,7 @@
                 <div class="social-links">
                     <a href="https://www.tiktok.com/@gtv.by.g.chetty" target="_blank"><i class="fab fa-tiktok"></i></a>
                     <a href="https://www.tiktok.com/@lionfuel" target="_blank"><i class="fab fa-tiktok"></i></a>
-                    <a href="https://wa.me/23059237053" class="whatsapp-btn" target="_blank">
+                    <a href="https://api.whatsapp.com/send?phone=23059237053&text=Hello%20LionFuel%20Code%2C%20I%20want%20to%20join%20the%20brotherhood" class="whatsapp-btn" target="_blank">
                         <i class="fab fa-whatsapp"></i> Message the LionFuel Team
                     </a>
                 </div>
@@ -943,7 +1017,7 @@
     </footer>
 
     <!-- Floating WhatsApp Button -->
-    <a href="https://wa.me/23059237053" class="floating-whatsapp" target="_blank">
+    <a href="https://api.whatsapp.com/send?phone=23059237053&text=Hello%20LionFuel%20Code%2C%20I%20want%20to%20join%20the%20brotherhood" class="floating-whatsapp" target="_blank">
         <i class="fab fa-whatsapp"></i>
     </a>
 
@@ -960,17 +1034,48 @@
             const city = formData.get('city');
             const reason = formData.get('reason');
             
-            // Create WhatsApp message
-            const message = `LION FUEL CODE APPLICATION%0A%0AName: ${name}%0AAge: ${age}%0APhone: ${phone}%0ALocation: ${city}%0AWhy I want to join: ${reason}`;
+            // Create WhatsApp message with proper encoding
+            const message = `LION FUEL CODE APPLICATION%0A%0A*Name:* ${encodeURIComponent(name)}%0A*Age:* ${encodeURIComponent(age)}%0A*Phone:* ${encodeURIComponent(phone)}%0A*Location:* ${encodeURIComponent(city)}%0A*Why I want to join:* ${encodeURIComponent(reason)}`;
             
-            // Open WhatsApp with pre-filled message
-            window.open(`https://wa.me/23059237053?text=${message}`, '_blank');
+            // Create WhatsApp link with multiple format options
+            const whatsappLinks = [
+                `https://api.whatsapp.com/send?phone=23059237053&text=${message}`,
+                `https://wa.me/23059237053?text=${message}`,
+                `https://web.whatsapp.com/send?phone=23059237053&text=${message}`
+            ];
             
-            // Show confirmation message
-            alert(`Thank you ${name}. Your application has been submitted. You will be contacted shortly. Welcome to the brotherhood.`);
+            // Try the first link, if it fails, students can manually copy the message
+            window.open(whatsappLinks[0], '_blank');
+            
+            // Show confirmation message with backup instructions
+            alert(`Thank you ${name}. Your application has been submitted.\n\nIf WhatsApp doesn't open automatically:\n1. Open WhatsApp manually\n2. Send this message to +23059237053:\n\n"LION FUEL CODE APPLICATION\n\nName: ${name}\nAge: ${age}\nPhone: ${phone}\nLocation: ${city}\nWhy I want to join: ${reason}"`);
             
             // Reset form
             this.reset();
+        });
+
+        // Copy template functionality
+        document.getElementById('copyTemplate').addEventListener('click', function() {
+            const template = `LION FUEL CODE APPLICATION
+
+Name: 
+Age: 
+Phone: 
+Location: 
+Why I want to join: `;
+            
+            navigator.clipboard.writeText(template).then(function() {
+                const originalText = this.textContent;
+                this.textContent = 'Copied!';
+                this.style.background = 'var(--gold)';
+                this.style.color = 'var(--black)';
+                
+                setTimeout(() => {
+                    this.textContent = originalText;
+                    this.style.background = 'transparent';
+                    this.style.color = 'var(--gold)';
+                }, 2000);
+            }.bind(this));
         });
 
         // Smooth scrolling for navigation links
@@ -1001,14 +1106,3 @@
     </script>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
