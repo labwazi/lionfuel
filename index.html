@@ -1010,9 +1010,7 @@
                     </a>
                 </div>
             </div>
-            <div class="copyright">
-                &copy; 2025 LION FUEL CODE. All rights reserved. Built for those who rise, not beg.
-            </div>
+           
         </div>
     </footer>
 
@@ -1105,7 +1103,190 @@ Why I want to join: `;
         });
     </script>
 </body>
+    <!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LionFuel Code – Secure Payment</title>
+
+<style>
+    body {
+        margin: 0;
+        font-family: "Segoe UI", Roboto, Arial, sans-serif;
+        background: #f1f5f9;
+    }
+
+    footer {
+        background: linear-gradient(135deg, #020617, #0f172a);
+        color: #ffffff;
+        padding: 35px 20px;
+        box-shadow: 0 -8px 25px rgba(0,0,0,0.3);
+    }
+
+    .container {
+        max-width: 900px;
+        margin: auto;
+        text-align: center;
+    }
+
+    h2 {
+        margin-bottom: 10px;
+        font-size: 24px;
+        letter-spacing: 0.5px;
+    }
+
+    .price {
+        font-size: 22px;
+        font-weight: bold;
+        color: #22c55e;
+        margin-bottom: 20px;
+    }
+
+    .card {
+        background: rgba(255,255,255,0.05);
+        border-radius: 16px;
+        padding: 25px;
+        margin: 20px 0;
+        backdrop-filter: blur(10px);
+    }
+
+    .label {
+        font-size: 13px;
+        text-transform: uppercase;
+        color: #94a3b8;
+        letter-spacing: 1px;
+    }
+
+    .account-box {
+        margin-top: 10px;
+        display: flex;
+        justify-content: center;
+        gap: 10px;
+        flex-wrap: wrap;
+    }
+
+    .account-number {
+        background: #020617;
+        border: 1px solid #334155;
+        border-radius: 10px;
+        padding: 12px 16px;
+        font-size: 16px;
+        color: #e5e7eb;
+        user-select: all;
+    }
+
+    button {
+        background: #22c55e;
+        color: #022c22;
+        border: none;
+        border-radius: 10px;
+        padding: 12px 18px;
+        font-size: 14px;
+        cursor: pointer;
+        font-weight: 600;
+        transition: 0.2s ease;
+    }
+
+    button:hover {
+        background: #16a34a;
+    }
+
+    .info {
+        font-size: 14px;
+        line-height: 1.7;
+        color: #e5e7eb;
+        margin-top: 15px;
+    }
+
+    .whatsapp {
+        margin-top: 20px;
+    }
+
+    .whatsapp a {
+        display: inline-block;
+        background: #25D366;
+        color: #ffffff;
+        padding: 14px 22px;
+        border-radius: 12px;
+        text-decoration: none;
+        font-weight: 600;
+        box-shadow: 0 6px 15px rgba(0,0,0,0.3);
+        transition: transform 0.2s ease;
+    }
+
+    .whatsapp a:hover {
+        transform: translateY(-2px);
+    }
+
+    .brand {
+        margin-top: 30px;
+        font-size: 13px;
+        color: #94a3b8;
+        letter-spacing: 0.4px;
+    }
+
+    @media (max-width: 600px) {
+        h2 { font-size: 20px; }
+        .price { font-size: 20px; }
+    }
+</style>
+
+<script>
+function copyAccount() {
+    const text = document.getElementById("accNum").innerText;
+    navigator.clipboard.writeText(text);
+    alert("Account number copied successfully.");
+}
+</script>
+</head>
+
+<body>
+
+<footer>
+    <div class="container">
+
+        <h2>LionFuel Code – Secure Payment Gateway</h2>
+        <div class="price">Rs 3,000 / Month</div>
+
+        <div class="card">
+            <div class="label">Bank Details</div>
+            <p><strong>SBM Bank Account</strong></p>
+
+            <div class="account-box">
+                <div class="account-number" id="accNum">00110100385744</div>
+                <button onclick="copyAccount()">Copy</button>
+            </div>
+
+            <div class="info">
+                Complete your payment using the account above.<br>
+                Once payment is successful, take a screenshot of the transaction.
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="label">Payment Confirmation</div>
+            <p class="info">
+                Send your payment screenshot via WhatsApp to receive your official receipt.
+            </p>
+
+            <div class="whatsapp">
+                <a href="https://wa.me/23052595505" target="_blank">
+                    💬 Send Screenshot on WhatsApp
+                </a>
+            </div>
+        </div>
+
+        <div class="brand">
+            © 2025 LionFuel Code • Secure • Trusted • Professional
+        </div>
+
+    </div>
+</footer>
+
+</body>
 </html>
+
 
 
 
