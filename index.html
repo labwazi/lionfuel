@@ -1283,9 +1283,406 @@ function copyAccount() {
 
     </div>
 </footer>
-
+    <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LIONFUEL - The Brotherhood</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #111;
+            color: #fff;
+            line-height: 1.6;
+            padding-bottom: 120px; /* Space for fixed buttons on mobile */
+        }
+        
+        /* Demo content to show footer in context */
+        .demo-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            text-align: center;
+        }
+        
+        .demo-content h1 {
+            color: #D4AF37;
+            margin-bottom: 20px;
+            font-size: 2.5rem;
+        }
+        
+        .demo-content p {
+            color: #aaa;
+            margin-bottom: 30px;
+            font-size: 1.1rem;
+        }
+        
+        /* Footer Styles */
+        .lionfuel-footer {
+            background-color: #0a0a0a;
+            color: #fff;
+            border-top: 3px solid #D4AF37;
+            padding: 40px 20px 20px;
+            position: relative;
+            z-index: 10;
+        }
+        
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .footer-headline {
+            text-align: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #222;
+        }
+        
+        .footer-headline h2 {
+            color: #D4AF37;
+            font-size: 2rem;
+            margin-bottom: 10px;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .footer-headline p {
+            color: #ccc;
+            font-size: 1.2rem;
+            font-weight: 500;
+        }
+        
+        .courses-section {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+        
+        .course-card {
+            background-color: #151515;
+            border-radius: 8px;
+            padding: 20px;
+            border-left: 4px solid #D4AF37;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .course-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+        }
+        
+        .course-title {
+            color: #fff;
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+            font-weight: 700;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .course-price {
+            background-color: #D4AF37;
+            color: #000;
+            font-weight: 800;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+        }
+        
+        .course-description {
+            color: #aaa;
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+        
+        /* Fixed CTA Buttons for Mobile */
+        .fixed-cta-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 15px 20px;
+            background-color: rgba(10, 10, 10, 0.95);
+            box-shadow: 0 -5px 15px rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+            border-top: 2px solid #D4AF37;
+        }
+        
+        .cta-button {
+            display: block;
+            text-align: center;
+            padding: 16px 20px;
+            border-radius: 50px;
+            font-weight: 800;
+            font-size: 1.1rem;
+            text-decoration: none;
+            transition: all 0.3s;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+        }
+        
+        .whatsapp-btn {
+            background-color: #25D366;
+            color: #000;
+        }
+        
+        .whatsapp-btn:hover {
+            background-color: #1da851;
+            transform: scale(1.03);
+        }
+        
+        .call-btn {
+            background-color: #D4AF37;
+            color: #000;
+        }
+        
+        .call-btn:hover {
+            background-color: #b8941f;
+            transform: scale(1.03);
+        }
+        
+        .brand-footer {
+            text-align: center;
+            padding-top: 30px;
+            margin-top: 30px;
+            border-top: 1px solid #222;
+        }
+        
+        .brand-name {
+            color: #D4AF37;
+            font-size: 2.2rem;
+            font-weight: 900;
+            margin-bottom: 5px;
+            letter-spacing: 1.5px;
+        }
+        
+        .brand-tagline {
+            color: #aaa;
+            font-size: 1.1rem;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+        
+        .brand-mission {
+            color: #fff;
+            font-size: 1.3rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-top: 10px;
+        }
+        
+        /* Desktop CTA Buttons (inside footer) */
+        .desktop-cta {
+            display: none;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            margin: 40px 0;
+        }
+        
+        /* Responsive Design */
+        @media (min-width: 768px) {
+            .fixed-cta-buttons {
+                display: none;
+            }
+            
+            .desktop-cta {
+                display: grid;
+            }
+            
+            .courses-section {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            body {
+                padding-bottom: 0;
+            }
+        }
+        
+        @media (min-width: 1024px) {
+            .courses-section {
+                grid-template-columns: repeat(4, 1fr);
+            }
+            
+            .footer-headline h2 {
+                font-size: 2.5rem;
+            }
+        }
+        
+        .footer-note {
+            text-align: center;
+            color: #666;
+            font-size: 0.9rem;
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid #222;
+        }
+        
+        .whatsapp-icon {
+            margin-right: 8px;
+            font-size: 1.2rem;
+        }
+    </style>
+</head>
+<body>
+    <!-- Demo Content (not part of footer) -->
+    <div class="demo-content">
+        <h1>LIONFUEL - The Brotherhood</h1>
+        <p>This is a demo page to showcase the premium footer design. Scroll down to see the footer with all training programs and call-to-action buttons.</p>
+        <p><i class="fas fa-arrow-down"></i> Scroll down to view the footer <i class="fas fa-arrow-down"></i></p>
+    </div>
+    
+    <!-- Main Footer -->
+    <footer class="lionfuel-footer">
+        <div class="footer-container">
+            <!-- Headline -->
+            <div class="footer-headline">
+                <h2>Invest in Yourself</h2>
+                <p>Every Course at Just Rs. 3000</p>
+                <p class="brand-tagline" style="margin-top: 10px; font-size: 1rem;">One price. Multiple paths. One code — the Code of Life.</p>
+            </div>
+            
+            <!-- Courses List -->
+            <div class="courses-section">
+                <div class="course-card">
+                    <div class="course-title">
+                        <span>Code of Life</span>
+                        <span class="course-price">Rs. 3000</span>
+                    </div>
+                    <p class="course-description">Spiritual, Mental, Public Speaking & Counseling Training. Master the fundamentals of personal transformation.</p>
+                </div>
+                
+                <div class="course-card">
+                    <div class="course-title">
+                        <span>Fitness Training Program</span>
+                        <span class="course-price">Rs. 3000</span>
+                    </div>
+                    <p class="course-description">Build physical strength and discipline with our comprehensive fitness and nutrition program.</p>
+                </div>
+                
+                <div class="course-card">
+                    <div class="course-title">
+                        <span>Gold Trading Mastery</span>
+                        <span class="course-price">Rs. 3000</span>
+                    </div>
+                    <p class="course-description">Learn to trade gold and other commodities with precision. Wealth-building strategies for disciplined minds.</p>
+                </div>
+                
+                <div class="course-card">
+                    <div class="course-title">
+                        <span>Real Estate Training Program</span>
+                        <span class="course-price">Rs. 3000</span>
+                    </div>
+                    <p class="course-description">Master property investment strategies and build long-term wealth through real estate.</p>
+                </div>
+            </div>
+            
+            <!-- Desktop CTA Buttons -->
+            <div class="desktop-cta">
+                <a href="https://wa.me/23052595505?text=I%20want%20to%20enroll%20in%20the%20Rs.%203000%20Lionfuel%20course." class="cta-button whatsapp-btn" target="_blank">
+                    <i class="fab fa-whatsapp whatsapp-icon"></i> Buy via WhatsApp
+                </a>
+                <a href="https://wa.me/23052595505" class="cta-button call-btn" target="_blank">
+                    <i class="fas fa-phone-alt whatsapp-icon"></i> Book My Call
+                </a>
+            </div>
+            
+            <!-- Brand Footer -->
+            <div class="brand-footer">
+                <div class="brand-name">LIONFUEL</div>
+                <div class="brand-tagline">The Organization. The Brotherhood.</div>
+                <div class="brand-mission">Build strength. Build wealth. Build purpose.</div>
+            </div>
+            
+            <div class="footer-note">
+                &copy; LIONFUEL - The Brotherhood. All rights reserved. | Transform Your Life Today
+            </div>
+        </div>
+    </footer>
+    
+    <!-- Fixed Mobile CTA Buttons -->
+    <div class="fixed-cta-buttons">
+        <a href="https://wa.me/23052595505?text=I%20want%20to%20enroll%20in%20the%20Rs.%203000%20Lionfuel%20course." class="cta-button whatsapp-btn" target="_blank">
+            <i class="fab fa-whatsapp whatsapp-icon"></i> Buy via WhatsApp
+        </a>
+        <a href="https://wa.me/23052595505" class="cta-button call-btn" target="_blank">
+            <i class="fas fa-phone-alt whatsapp-icon"></i> Book My Call
+        </a>
+    </div>
+    
+    <script>
+        // Add smooth scrolling for demo purposes
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                if(targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if(targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 20,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // Add animation to course cards on scroll
+        document.addEventListener('DOMContentLoaded', function() {
+            const courseCards = document.querySelectorAll('.course-card');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if(entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, { threshold: 0.1 });
+            
+            courseCards.forEach(card => {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(20px)';
+                card.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+                observer.observe(card);
+            });
+            
+            // WhatsApp link handling for desktop fallback
+            const whatsappLinks = document.querySelectorAll('a[href*="wa.me"]');
+            whatsappLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    // If on desktop and not mobile, open WhatsApp Web
+                    if(window.innerWidth > 768 && !/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+                        // Ensure WhatsApp Web URL
+                        const url = this.href;
+                        if(url.includes('wa.me')) {
+                            // Keep the same URL as WhatsApp Web handles both
+                            // No modification needed
+                        }
+                    }
+                });
+            });
+        });
+    </script>
 </body>
 </html>
+
 
 
 
